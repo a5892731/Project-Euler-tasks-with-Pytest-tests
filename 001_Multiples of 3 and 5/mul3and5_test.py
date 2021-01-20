@@ -25,13 +25,34 @@ def multiples_3_and_5_initialization():
 
 
 @pytest.mark.parametrize("div_range, expected",[
-    (3, [3]),
-    (5, [3, 5]),
-    (10, [42])])
+    (4, [3]),
+    (6, [3, 5]),
+    (10, [3, 5, 6, 9]),
+    (11, [3, 5, 6, 9, 10]),
+])
 
 def test_find_dividers_of_3_or_5(div_range, expected):
     multiples_3_and_5 = Multiples_3_and_5()
     multiples_3_and_5.div_range = div_range
     multiples_3_and_5.__init__()
-    print(">>> >>>RANGE {} DIVIDERS LIST: {}".format(div_range, multiples_3_and_5.dividers))
+    print(">>> >>>RANGE {} DIVIDERSERS LIST: {}".format(div_range, multiples_3_and_5.dividers))
     assert multiples_3_and_5.dividers == expected
+
+
+@pytest.mark.parametrize("div_range, expected",[
+    (4, 3),
+    (6, 8),
+    (10, 23),
+    (11, 33),
+])
+def test_sum_of_dividers(div_range, expected):
+    multiples_3_and_5 = Multiples_3_and_5()
+    multiples_3_and_5.div_range = div_range
+    multiples_3_and_5.__init__()
+    print(">>> >>>RANGE {} DIVIDERSERS SUM: {}".format(div_range, multiples_3_and_5.sum_of_dividers))
+    assert multiples_3_and_5.sum_of_dividers == expected
+
+def test_main_class_in_default_range(expected = 233168):
+    multiples_3_and_5 = Multiples_3_and_5()
+    print(">>> >>>RANGE {} DIVIDERSERS SUM: {}".format(1000, multiples_3_and_5.sum_of_dividers))
+    assert multiples_3_and_5.sum_of_dividers == expected

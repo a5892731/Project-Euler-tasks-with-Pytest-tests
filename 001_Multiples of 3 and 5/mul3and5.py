@@ -27,7 +27,7 @@ class Multiples_3_and_5(object):
         #print("Sum off dividers list is: {}".format(self.sum_of_dividers))
 
     def find_dividers_of_3_or_5(self, div_range):
-        output =  [number for number in range(div_range + 1)
+        output =  [number for number in range(div_range)
                 if (number % 3 == 0 or number % 5 == 0) and number != 0]
 
         #print(">>>> Dividors of 3 and 5 in range {} are:\n {}".format(div_range, output))
