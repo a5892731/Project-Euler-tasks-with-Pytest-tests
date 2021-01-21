@@ -10,8 +10,6 @@ Remember to install:
 
 pip install pytest
 
-
-
 ------------------
 
 fibonaci numbers
@@ -30,33 +28,33 @@ from fibo import Fibonacci
 def fibo_gen(len):
     last_fibo_num = 1
     actual_fibo_num = 1
+    fibo_list = [0, 1]
     if len == 0:
         return [0]
     if len == 1:
-        return [0, actual_fibo_num]
+        return fibo_list
     if len > 1:
         for num in range(1, len):
             output = actual_fibo_num + last_fibo_num
             last_fibo_num = actual_fibo_num
             actual_fibo_num = output
-        return actual_fibo_num
+            fibo_list.append(last_fibo_num)
+
+        return fibo_list
 
 
 def fibonacci_initialization():
     fibonacci = Fibonacci()
     assert fibonacci
 
-@pytest.mark.parametrize("fibo len, expected",[
+@pytest.mark.parametrize("length_of_fibonnaci_sequece, expected",[
+    (0, [0]),
     (1, fibo_gen(1)),
-    (2, fibo_gen(2)),
-    (3, fibo_gen(3)),
-    (4, fibo_gen(4)),
-    (5, fibo_gen(5)),
     (10, fibo_gen(10)),
+    (15, fibo_gen(15)),
     (20, fibo_gen(20)),
-    (30, fibo_gen(30)),
-    (40, fibo_gen(40)),
-    (50, fibo_gen(50)),
+    (32, fibo_gen(32)),
+    (41, fibo_gen(41))
 ])
 
 
@@ -64,11 +62,11 @@ def test_fibonnaci_sequece_generator(length_of_fibonnaci_sequece, expected):
     fibonacci = Fibonacci()
     fibonacci.secuence_len = length_of_fibonnaci_sequece
     fibonacci.__init__()
-    print(">>> >>>RANGE {} FIBONACCI LIST: {}".format(fibonacci.secuence_len, fibonacci.fibo_list))
+    print(">>> >>>RANGE {} FIBONACCI LIST SUM: {}".format(fibonacci.secuence_len, fibonacci.fibo_list))
     assert fibonacci.fibo_list == expected
 
 
-@pytest.mark.parametrize("fibo len, expected",[
+@pytest.mark.parametrize("length_of_fibonnaci_sequece, expected",[
     (1, 1),
     (2, 2),
     (3, 4),
@@ -78,14 +76,23 @@ def test_fibonnaci_sequece_generator(length_of_fibonnaci_sequece, expected):
     (20, 17710),
     (30, 2178308),
     (40, 267914295),
-    (50, 20365011073),
 ])
 
 def test_fibonnaci_sequece_sum(length_of_fibonnaci_sequece, expected):
     fibonacci = Fibonacci()
     fibonacci.secuence_len = length_of_fibonnaci_sequece
     fibonacci.__init__()
-    print(">>> >>>RANGE {} FIBONACCI LIST: {}".format(fibonacci.secuence_len, fibonacci.sum_of_fibo_num))
+    print(">>> >>>RANGE {} FIBONACCI LIST SUM: {}".format(fibonacci.secuence_len, fibonacci.sum_of_fibo_num))
     assert fibonacci.sum_of_fibo_num == expected
+
+
+def test_fibonaci_max_num_list(expected = 3524578): # for default max value that is les than 4 000 000
+    fibonacci = Fibonacci()
+    fibonacci.fibonaci_list_up_to_num()
+    print(">>> >>>max number {} FIBONACCI LIST: {}".format(fibonacci.max_value, fibonacci.fibo_list))
+    print(">>> >>>FIBONACCI LIST SUM: {}".format(fibonacci.sum_of_fibo_num))
+    assert fibonacci.fibo_list[-1] == expected
+
+
 
 

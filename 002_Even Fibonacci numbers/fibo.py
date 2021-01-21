@@ -15,30 +15,30 @@ https://projecteuler.net/problem=2
 class Fibonacci():
     version = "1.1"
     secuence_len = 100
+    max_value = 4000000
 
     def __init__(self):
         self.sum_of_fibo_num = 0
         self.fibo_list = []
 
-        self.fibo_list = fibonnacci_sequece_generator()
-
-
+        self.fibo_list = self.fibonnacci_sequece_generator()
+        self.sum_of_fibo_num = self.fibonacci_list_sum()
 
     def fibonnacci_sequece_generator(self): # https://en.wikipedia.org/wiki/Fibonacci_number
 
 
-        if self.length_of_fibonnaci_sequece == 0:
+        if self.secuence_len == 0:
             return [0]
-        elif self.length_of_fibonnaci_sequece == 1:
+        elif self.secuence_len == 1:
             return [0, 1]
-        elif self.length_of_fibonnaci_sequece > 1:
+        elif self.secuence_len > 1:
 
             output_in_iteration_minus_1 = 1 # loop is starting in iteration 2!
             output_in_iteration_minus_2 = 0 # loop is starting in iteration 2!
             output = 0
-            output_list = [1]
+            output_list = [0, 1]
 
-            for iteration in range(2, self.length_of_fibonnaci_sequece + 1):  # loop is starting in iteration 2!
+            for iteration in range(2, self.secuence_len + 1):  # loop is starting in iteration 2!
 
                 output = output_in_iteration_minus_1 + output_in_iteration_minus_2
                 output_in_iteration_minus_2 = output_in_iteration_minus_1
@@ -53,9 +53,36 @@ class Fibonacci():
     def fibonacci_list_sum(self):
          output = 0
          for num in self.fibo_list:
-             output = output + self.fibo_list
+             output = output + num
          return output
+
+
+    def fibonaci_list_up_to_num(self):
+        if self.max_value == 0:
+            return [0]
+        elif self.max_value == 1:
+            return [0, 1]
+        elif self.max_value > 1:
+
+            output_in_iteration_minus_1 = 1 # loop is starting in iteration 2!
+            output_in_iteration_minus_2 = 0 # loop is starting in iteration 2!
+            output = 0
+            output_list = [0, 1]
+
+            iteration = 2
+            while True:
+                output = output_in_iteration_minus_1 + output_in_iteration_minus_2
+                if output >= self.max_value:
+                    break
+                output_in_iteration_minus_2 = output_in_iteration_minus_1
+                output_in_iteration_minus_1 = output
+                output_list.append(output)
+
+            self.fibo_list = output_list
+            self.fibonacci_list_sum()
 
 
 
 # >>>>>>>>>>>>>>>>>>> MAIN <<<<<<<<<<<<<<<<<<<<<
+
+#f = Fibonacci()
