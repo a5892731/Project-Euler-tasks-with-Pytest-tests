@@ -18,38 +18,41 @@ import pytest
 from prime_factor import largest_prime_factor_from_number
 
 
-def input_output_for_test_generator(file_address = "prime_numbers.txt"):
+def output_for_test_generator(input_number, file_address = "prime_numbers.txt"):
     file = open(file_address, 'r')
-    prime_numbers_list = file.split(" ")
-    input_number = 2
-    input_numbers_list = []
-    output_numbers_list = []
 
-    for number in prime_numbers_list:
-        print(number)
-
-        while input_number <= number:
-            input_numbers_list.append(input_number)
-            input_number += 1
-            output_numbers_list.append(number)
+    prime_numbers_list = [int(line) for line in file]
+    print(">>>>>>>>>>>>>>> >>>>>>>>>>>>>>>>>>>>> >>>")
+    print(">>>>>>>>>>>>>>> >>>>>>>>>>>>>>>>>>>>> >>>" + str(prime_numbers_list))
     file.close()
-    return input_numbers_list, output_numbers_list
+
+    output = 1
+    for prime_number in prime_numbers_list:
+        print(str(input_number) + str(prime_number))
+        print(prime_number)
+        if input_number < prime_number:
+            output = prime_number
+        if prime_number >= input_number:
+            break
+
+    return output
 
 
-def largest_prime_factor_from_number(number, expected):
+@pytest.mark.parametrize("number, expected",[
+    (7, output_for_test_generator(7)),
+
+])
+
+
+def test_largest_prime_factor_from_number(number, expected):
+
+
 
     output = largest_prime_factor_from_number(number)
+
     print(">>> >>> range {} max prime number: {}".format(number, output))
     assert output == expected
 
-
-
-def tests_run():
-    input_output = []
-    input_output = input_output_for_test_generator()
-
-    for element in input_output[0]:
-        largest_prime_factor_from_number(element, input_output[1])
 
 
 
