@@ -42,4 +42,5 @@ def prime_number_check(number):
 
 #print(">>>>>> " + str(largest_prime_factor_from_number(600851475143)))
 
-#print(">>>>>> " + str(largest_prime_factor_from_number(2)))
+#print(">>>>>> " + str(largest_prime_factor_from_number(13)))
+
