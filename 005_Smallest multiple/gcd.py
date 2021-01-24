@@ -6,7 +6,7 @@ What is the smallest positive number that is evenly divisible by all of the numb
 
 '''
 
-def greatest_common_divisor_in_list(num_list):
+def least_common_multiple_in_list(num_list):
     common_div = min(num_list) # it just cant be less than smallest number on table
     output_list = []
     for number in range(0, len(num_list), 2):
@@ -15,7 +15,7 @@ def greatest_common_divisor_in_list(num_list):
     #print(output_list)
 
     if len(output_list) > 1:
-        output_list = greatest_common_divisor_in_list(output_list)
+        output_list = least_common_multiple_in_list(output_list)
     return output_list
 
 def greatest_common_divisor(num1, num2):  # it can be more optimal, but its fine
@@ -38,6 +38,23 @@ def least_common_multiple(num1, num2):  # it can be more optimal, but its fine
     return max_mul
 
 
-#print(least_common_multiple(72, 108))
+def smallest_num_that_can_be_div_by(min_range = 1, max_range = 10): # its working but not optimal
+    output = 0
+    number = 1
+    while True:
+        div_counter = 0
+        for divisor in range(min_range, max_range + 1):
+            if number % divisor == 0:
+                div_counter += 1
+            if div_counter == (max_range - min_range + 1):
+                output = number
+                break
+        if output > 0:
+            break
+        number += 1
+    return output
 
-#print(greatest_common_divisor_in_list(list(range(1, 10 + 1)))[0]) # if you like to have 20 in list you must add 1
+print(least_common_multiple(9, 12))
+
+print(least_common_multiple_in_list(list(range(1, 14 + 1)))[0]) # if you like to have 20 in list you must add 1
+#print(smallest_num_that_can_be_div_by(1, 14))

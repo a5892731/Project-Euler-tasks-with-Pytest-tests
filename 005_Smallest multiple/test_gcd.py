@@ -18,8 +18,7 @@ test greatest_common_divisor functions
 
 import pytest
 
-from gcd import greatest_common_divisor
-
+from gcd import least_common_multiple, least_common_multiple_in_list
 
 def smallest_num_that_can_be_div_by(min_range = 1, max_range = 10): # its working but not optimal
     output = 0
@@ -37,9 +36,6 @@ def smallest_num_that_can_be_div_by(min_range = 1, max_range = 10): # its workin
         number += 1
     return output
 
-
-
-
 @pytest.mark.parametrize("number, number2, expected",[
     (9, 6, 18),
     (12, 6, 12),
@@ -50,9 +46,24 @@ def smallest_num_that_can_be_div_by(min_range = 1, max_range = 10): # its workin
     (223, 1481, 330263),
 ])
 
-def greatest_common_divisor_test(number, number2, expected):
+def test_greatest_common_divisor(number, number2, expected):
 
-    output = greatest_common_divisor(number, number2)
+    output = least_common_multiple(number, number2)
     print(">>> >>> in1 {} in2 {} out: {} expected {}".format(number, number2, output, expected))
+    assert output == expected
+
+
+
+@pytest.mark.parametrize("number, number2, expected",[
+    (1, 10, smallest_num_that_can_be_div_by(1, 10)),
+    (5, 14, smallest_num_that_can_be_div_by(5, 14)),
+    (11, 17, smallest_num_that_can_be_div_by(11, 17))
+])
+
+
+def test_greatest_common_divisor_in_list(number, number2, expected):
+
+    output = least_common_multiple_in_list(list(range(number, number2 + 1)))[0] # if you like to have 20 in list you must add 1
+    print(">>> >>> in1= {} in2= {} out= {} expected= {}".format(number, number2, output, expected))
     assert output == expected
 
