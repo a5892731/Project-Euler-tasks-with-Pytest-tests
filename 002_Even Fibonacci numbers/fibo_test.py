@@ -61,7 +61,8 @@ def fibonacci_initialization():
 def test_fibonnaci_sequece_generator(length_of_fibonnaci_sequece, expected):
     fibonacci = Fibonacci()
     fibonacci.secuence_len = length_of_fibonnaci_sequece
-    fibonacci.__init__()
+    fibonacci.fibonnacci_sequece_generator()
+
     print(">>> >>>RANGE {} FIBONACCI LIST SUM: {}".format(fibonacci.secuence_len, fibonacci.fibo_list))
     assert fibonacci.fibo_list == expected
 
@@ -81,7 +82,8 @@ def test_fibonnaci_sequece_generator(length_of_fibonnaci_sequece, expected):
 def test_fibonnaci_sequece_sum(length_of_fibonnaci_sequece, expected):
     fibonacci = Fibonacci()
     fibonacci.secuence_len = length_of_fibonnaci_sequece
-    fibonacci.__init__()
+    fibonacci.fibonnacci_sequece_generator()
+    fibonacci.fibonacci_list_sum()
     print(">>> >>>RANGE {} FIBONACCI LIST SUM: {}".format(fibonacci.secuence_len, fibonacci.sum_of_fibo_num))
     assert fibonacci.sum_of_fibo_num == expected
 
@@ -89,6 +91,7 @@ def test_fibonnaci_sequece_sum(length_of_fibonnaci_sequece, expected):
 def test_fibonaci_max_num_list(expected = 3524578): # for default max value that is les than 4 000 000
     fibonacci = Fibonacci()
     fibonacci.fibonaci_list_up_to_num()
+    fibonacci.fibonacci_list_sum()
     print(">>> >>>max number {} FIBONACCI LIST: {}".format(fibonacci.max_value, fibonacci.fibo_list))
     print(">>> >>>FIBONACCI LIST SUM: {}".format(fibonacci.sum_of_fibo_num))
     assert fibonacci.fibo_list[-1] == expected
