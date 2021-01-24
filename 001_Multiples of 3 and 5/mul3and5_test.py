@@ -34,7 +34,7 @@ def multiples_3_and_5_initialization():
 def test_find_dividers_of_3_or_5(div_range, expected):
     multiples_3_and_5 = Multiples_3_and_5()
     multiples_3_and_5.div_range = div_range
-    multiples_3_and_5.__init__()
+    multiples_3_and_5.find_dividers_of_3_or_5()
     print(">>> >>>RANGE {} DIVIDERSERS LIST: {}".format(div_range, multiples_3_and_5.dividers))
     assert multiples_3_and_5.dividers == expected
 
@@ -48,11 +48,14 @@ def test_find_dividers_of_3_or_5(div_range, expected):
 def test_sum_of_dividers(div_range, expected):
     multiples_3_and_5 = Multiples_3_and_5()
     multiples_3_and_5.div_range = div_range
-    multiples_3_and_5.__init__()
+    multiples_3_and_5.find_dividers_of_3_or_5()
+    multiples_3_and_5.find_sum_of_dividers()
     print(">>> >>>RANGE {} DIVIDERSERS SUM: {}".format(div_range, multiples_3_and_5.sum_of_dividers))
     assert multiples_3_and_5.sum_of_dividers == expected
 
 def test_main_class_in_default_range(expected = 233168):
     multiples_3_and_5 = Multiples_3_and_5()
+    multiples_3_and_5.find_dividers_of_3_or_5()
+    multiples_3_and_5.find_sum_of_dividers()
     print(">>> >>>RANGE {} DIVIDERSERS SUM: {}".format(1000, multiples_3_and_5.sum_of_dividers))
     assert multiples_3_and_5.sum_of_dividers == expected
