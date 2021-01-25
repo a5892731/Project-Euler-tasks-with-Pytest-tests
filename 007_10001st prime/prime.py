@@ -7,7 +7,7 @@ What is the 10 001st prime number?
 def prime_num(prime_sequence_number):
     prime_number_counter = 0
     potential_prime_number = 2 # first prime number
-    prime_list = [2]
+    prime_list = ()
 
     if prime_sequence_number < 1:
         return None
@@ -15,7 +15,7 @@ def prime_num(prime_sequence_number):
     while True:
         if prime_number_check2(potential_prime_number, prime_list) == True:
             prime_number_counter += 1
-            prime_list.append(potential_prime_number)
+            prime_list = prime_list + (potential_prime_number,)
         if prime_number_counter == prime_sequence_number:
             prime_number = potential_prime_number
             break
@@ -32,9 +32,6 @@ def prime_number_check(number, prime_list):
 
 def prime_number_check2(number, prime_list): # faster version
     divisors_list = prime_list  # if your number is not prime, then it can be divided by one of those numbers
-
-    if number in divisors_list:
-        return True
     for divisor in divisors_list:
         if number % divisor == 0:  # the prime number can be divided only by 1 and himself (2 divisors) so if function finds another, then return false
             return False
@@ -57,9 +54,9 @@ def largest_prime_factor_from_number(number):
 
 
 #--------------------------------------------------------------------------
-print(prime_num(10001)) #104743
+print(prime_num(100000)) #104743
 
-print(prime_num(1000)) #(1000, 7919),
+#print(prime_num(1000)) #(1000, 7919),
 
 #for i in range(1,101):
 #    print(str(i) + " " + str(prime_num(i)))

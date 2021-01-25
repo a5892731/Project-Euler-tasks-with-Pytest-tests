@@ -34,7 +34,7 @@ from prime import prime_num
     (401, 2749),
     (841, 6481),
     (1000, 7919),
-    (10000, 104729)
+    (100000, 104729)
 ])
 
 def test_prime_num(input, expected):
