@@ -54,4 +54,4 @@ def find_the_greatest_sequence_of_multiplications(input_string, number_of_elemen
     return [best_sequence, max_mul]
 
 
-print(find_the_greatest_sequence_of_multiplications(get_data_from_file(), 4))
+print(find_the_greatest_sequence_of_multiplications(get_data_from_file(), 13))

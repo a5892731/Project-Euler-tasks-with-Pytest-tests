@@ -54,9 +54,9 @@ def largest_prime_factor_from_number(number):
 
 
 #--------------------------------------------------------------------------
-print(prime_num(100000)) #104743
+#print(prime_num(100000)) #104743
 
-#print(prime_num(1000)) #(1000, 7919),
+print(prime_num(1000)) #(1000, 7919),
 
 #for i in range(1,101):
 #    print(str(i) + " " + str(prime_num(i)))
